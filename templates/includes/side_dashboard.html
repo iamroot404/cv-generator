@@ -1,0 +1,18 @@
+{% load static %}
+<div class="col-sm-8 col-md-4">
+    <hr class="offset-sm visible-sm">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h2 class="no-margin"> <i class="ion-android-settings"></i> Settings</h2>
+          <hr class="offset-md">
+
+          <ul class="list-group">
+              <a class="list-group-item list-group-item-{% if '/account/' in request.path %}info{% endif %}" href="{% url 'account' %}"> Dashboard </a>
+              <a class="list-group-item list-group-item-{% if '/edit_profile/'  in request.path %}info{% endif %}" href="{% url 'edit_profile' %}"> Edit Profile </a>
+              <a class="list-group-item list-group-item-{% if '/change_password/'  in request.path %}warning{% endif %}" href="{% url 'change_password' %}"> Change Password </a>
+
+          </ul>
+          
+        </div>
+      </div>
+  </div>

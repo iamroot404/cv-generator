@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 md-padding">
+      <h1 class="align-center">Returning Customer</h1>
+      <br>
+      {% include 'includes/alerts.html' %}
+      <form class="signin" method="post">
+        {% csrf_token %}
+        <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+        <br>
+        <input type="password" name="password" value="" placeholder="Password" required="" class="form-control" />
+        <br>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+        <a href="{% url 'forgotpassword' %}" data-action="Forgot-Password" class="xs-margin">Forgot Password ></a>
+        <br><br>
+
+        <p>
+          Don't have an account? Create one now! <a href="{% url 'register' %}"> Registration > </a>
+        </p>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

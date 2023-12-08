@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    
+  h3{
+      font-family: 'Times New Roman', Times, serif;
+      text-decoration: underline;
+      
+      font-weight: bold;
+  }
+  h5{
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: normal;
+      
+      font-weight: bold;
+  }
+  #list{
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bold;
+      
+      font-size: 14px;
+  }
+
+  
+
+/* Add Styles for your cards here */
+
+/* ------ */
+
+/* Animation SCSS */
+.come-in {
+-webkit-transform: translateY(150px);
+    -ms-transform: translateY(150px);
+        transform: translateY(150px);
+-webkit-animation: come-in 0.8s ease forwards;
+        animation: come-in 0.8s ease forwards;
+}
+
+.come-in:nth-child(odd) {
+-webkit-animation-duration: 0.6s;
+        animation-duration: 0.6s;
+}
+  
+</style>
+
+
+<div class="box">
+  <div class="container">
+    <div class="col-sm-offset-5">
+      <h1><i class="ion-android-clipboard"></i> Preview</h1>
+    </div>
+      <hr class="offset-sm">
+  </div>
+</div>
+<hr class="offset-md">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-sm-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <h3>PERSONAL INFORMATION</h3>
+              <h5>NAME: {{ user_details.name }}</h5>
+              <h5>ID NUMBER: {{ user_details.idno }}</h5>
+              <h5>YEAR OF BIRTH: {{ user_details.dob }}</h5>
+              <h5>MOBILE NUMBER: {{ user_details.phone }}</h5>
+              <h5>EMAIL: {{ user_details.email }}</h5>
+              <h5>GENDER: {{ user_details.gender }}</h5>
+              <h5>NATIONALITY: {{ user_details.nation }}</h5>
+              <h5>LANGUAGES: {{ user_details.language }}</h5>
+              <h5>MARITAL STATUS: {{ user_details.status }}</h5>
+              <h5>RELIGION: {{ user_details.religion }}</h5>
+              <h3>EDUCATIONAL BACKGROUND</h3>
+              {% if user_details.university%}
+              <h5>{{user_details.university_year}}: {{user_details.university}} ({{user_details.university_course}})</h5>
+              {%else%}
+              {%endif%}
+              <h5>{{user_details.highschool_year}}: {{user_details.highschool}} ({{user_details.highschool_cert}})</h5>
+              <h5>{{user_details.primary_year}}: {{user_details.primary}} ({{user_details.primary_cert}})</h5>
+              <h3>SKILLS</h3>
+              <ul id="list">
+                <li>{{user_details.skill_one}}</li>
+                <li>{{user_details.skill_two}}</li>
+                <li>{{user_details.skill_three}}</li>
+              </ul>
+              <h3>HOBBIES</h3>
+              <ul id="list">
+                  <li>{{user_details.hobby_one}}</li>
+                  <li>{{user_details.hobby_two}}</li>
+                  <li>{{user_details.hobby_three}}</li>
+              </ul>
+     
+              <h3>REFEREES</h3>
+              <h5>1. {{user_details.referee_post_one}}</h5>
+              <h5>&nbsp;&nbsp;&nbsp;&nbsp;{{user_details.referee_company_one}}</h5>
+              <h5>&nbsp;&nbsp;&nbsp;&nbsp;{{user_details.referee_name_one}}</h5>
+              <h5>&nbsp;&nbsp;&nbsp;&nbsp;TELEPHONE: {{user_details.referee_contact_one}}</h5>
+              <br>
+              <h5>{{user_details.referee_post_two}}</h5>
+              <h5>{{user_details.referee_company_two}}</h5>
+              <h5>{{user_details.referee_name_two}}</h5>
+              <h5>TELEPHONE: {{user_details.referee_contact_two}}</h5>
+              <br>
+              {% if user_details.referee_name_three%}
+              <h5>{{user_details.referee_post_three}}</h5>
+              <h5>{{user_details.referee_company_three}}</h5>
+              <h5>{{user_details.referee_name_three}}</h5>
+              <h5>TELEPHONE: {{user_details.referee_contact_three}}</h5>
+              {%else%}
+              {%endif%}
+              </div>
+              <div class="panel-footer text-center">
+                <a href="{% url 'resume' user_details.id %}"><h4 class="btn btn-primary">Download</h4></a>
+                <a href="{% url 'editBasic' user_details.id %}"><h4 class="btn btn-success">Edit CV</h4></a>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<hr class="offset-lg">
+<hr class="offset-lg"> 
+
+{% endblock %}

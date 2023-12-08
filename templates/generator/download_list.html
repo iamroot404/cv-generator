@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<hr class="offset-md">
+
+<div class="box">
+  <div class="container">
+    <div class="col-sm-offset-5">
+      
+      <h1><i class="ion-android-download"></i> Downloads</h1>
+      
+    </div>
+      <hr class="offset-sm">
+  </div>
+</div>
+<hr class="offset-md">
+
+
+<div class="container">
+  {% if basic or advBasic %}
+    <div class="row">
+        <div class="col-md-8 col-sm-offset-2">
+            
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="checkout-cart">
+                  <div class="content">
+                   
+                    {% for basic in basic %}
+                    
+                      <div class="media">
+                        
+                        <div class="media-left">
+                          <h2 class="h4 media-heading">{{basic.name}}</h2>
+                          <label>{{user}}</label>
+                          <p class="price">{{basic.created_at}}</p>
+                        </div>
+                        <div class="media-body">
+                          
+                          <a href="{% url 'basic_preview' basic.id %}"><p>Preview your CV</p></a>
+                          
+                        </div>
+                        <div class="controls">
+                          <div class="input-group">
+                            <a href="{% url 'resume' basic.id %}"> <i class="ion-android-download"></i> Download </a>
+                          </div><!-- /input-group -->
+
+                          <div class="input-group">
+                            <a href="{% url 'editBasic' basic.id %}"> <i class="ion-android-create"></i> Edit </a>
+                          </div><!-- /input-group -->
+
+                          <a href="{% url 'delete_cv' basic.id %}"> <i class="ion-android-delete"></i> Remove </a>
+                        </div>
+                      </div>
+
+                      {% endfor %}
+                      {%else%}
+                      <div class="col-sm-offset-5">
+      
+                        <h4>No CV Available! <span><a href="{% url 'cv_list' %}">Create Cv</a></span></h4>
+                        
+                      </div>
+                      {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        {% if advBasic %}
+        <div class="row">
+          <div class="col-md-8 col-sm-offset-2">
+            <div class="text-center">
+            <h5><i class="ion-android-download"></i> Premium Downloads</h5>
+            </div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="checkout-cart">
+                    <div class="content">
+                      
+                      {% for advBasic in advBasic %}
+                      
+                        <div class="media">
+                          
+                          <div class="media-left">
+                            <h2 class="h4 media-heading">{{advBasic.name}}</h2>
+                            <label>{{user}}</label>
+                            <p class="price">{{advBasic.created_at}}</p>
+                          </div>
+                          <div class="media-body">
+                            
+                            <a href="{% url 'advbasic_preview' advBasic.id %}"><p>Preview your CV</p></a>
+                            
+                          </div>
+                          <div class="controls">
+                            <div class="input-group">
+                              <a href="{% url 'AdvBresume' advBasic.id %}"> <i class="ion-android-download"></i> Download </a>
+                            </div><!-- /input-group -->
+  
+                            <div class="input-group">
+                              <a href="{% url 'editAdvBasic' advBasic.id %}"> <i class="ion-android-create"></i> Edit </a>
+                            </div><!-- /input-group -->
+  
+                            <a href="{% url 'advdelete_cv' advBasic.id %}"> <i class="ion-android-delete"></i> Remove </a>
+                          </div>
+                        </div>
+  
+                        {% endfor %}
+                        
+                           
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          {%else%}
+          {% endif %}
+    </div>
+</div>
+<hr class="offset-lg">
+<hr class="offset-lg"> 
+
+{% endblock %}

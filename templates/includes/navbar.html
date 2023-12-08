@@ -1,0 +1,37 @@
+{% load static %}
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'home' %}"> <i class="ion-android-desktop"></i> CV Generator</a>
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="{% if request.resolver_match.view_name == 'home' %} active {% endif %}"><a href="{% url 'home' %}">Home</a></li>
+        {% if user.id is not None %}
+        <li class="{% if request.resolver_match.view_name == 'cv_list' %} active {% endif %}"><a href="{% url 'cv_list' %}">Create CV</a></li>
+        <li class="{% if request.resolver_match.view_name == 'download_list' %} active {% endif %}"><a href="{% url 'download_list' %}">Downloads</a></li>
+        <li class="{% if request.resolver_match.view_name == 'account' %} active {% endif %}"><a href="{% url 'account' %}"><i class="ion-android-person"></i> Account</a></li>
+        
+        {% endif %}
+        <li class="{% if request.resolver_match.view_name == 'contact' %} active {% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.id is None %}
+        <li class="{% if request.resolver_match.view_name == 'login' %} active {% endif %}"><a href="{% url 'login' %}"> <i class="ion-android-person"></i> Login </a></li>
+        <li class="{% if request.resolver_match.view_name == 'register' %} active {% endif %}"><a href="{% url 'register' %}"> Sign Up</a></li>
+        {% else %}
+        <li><a href="{% url 'account' %}"> <img src="{{user.userprofile.profile_picture.url}}" alt="Avatar"  width="20" height="20" style="border-radius:50%"> Hello, {{user.first_name}} </a></li>
+        <li><a href="{% url 'logout' %}"> Logout</a></li>
+        {% endif %}
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</nav>

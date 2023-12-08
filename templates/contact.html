@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="white">
+  <hr class="offset-lg">
+
+  <div class="container align-center">
+    <h1 class="upp"> Need our help? </h1>
+    <p> Please insert question to a form below. </p>
+    <hr class="offset-md">
+
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <form class="contact" action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            {% include 'includes/alerts.html' %}
+          <textarea class="form-control" name="message" placeholder="Message" required="" rows="5"></textarea>
+          <br>
+          
+          <input type="text" name="name" value="" placeholder="Name" required="" class="form-control" />
+          <br>
+
+          <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+          <br>
+          <input type="text" name="subject" value="" placeholder="Subject" required="" class="form-control" />
+          <br>
+          <button type="submit" class="btn btn-primary justify"> Send question </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+
+
+<hr class="offset-lg">
+<hr class="offset-sm">
+
+
+{% endblock %}

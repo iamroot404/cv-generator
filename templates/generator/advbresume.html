@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>CV</title>
+
+    <style>
+        h2{
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        
+        }
+        h3{
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: underline;
+        }
+        h4{
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+            
+            
+        }
+        li{
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>CURRICULUM VITAE</h2>
+    <h3>PERSONAL INFORMATION</h3>
+    <h4>NAME: {{ user_details.name }}</h4>
+    <h4>ID NUMBER: {{ user_details.idno }}</h4>
+    <h4>YEAR OF BIRTH: {{ user_details.dob }}</h4>
+    <h4>MOBILE NUMBER: {{ user_details.phone }}</h4>
+    <h4>EMAIL: {{ user_details.email }}</h4>
+    <h4>GENDER: {{ user_details.gender }}</h4>
+    <h4>NATIONALITY: {{ user_details.nation }}</h4>
+    <h4>LANGUAGES: {{ user_details.language }}</h4>
+    <h4>MARITAL STATUS: {{ user_details.status }}</h4>
+    <h4>RELIGION: {{ user_details.religion }}</h4>
+    <h3>CAREER OBJECTIVE</h3>
+    <h4>{{ user_details.career }}</h4>
+
+    <h3>EDUCATIONAL BACKGROUND</h3>
+    {% if user_details.university%}
+    <h4>{{user_details.university_year}}: {{user_details.university}} ({{user_details.university_course}})</h4>
+    {%else%}
+    {%endif%}
+    <h4>{{user_details.highschool_year}}: {{user_details.highschool}} ({{user_details.highschool_cert}})</h4>
+    <h4>{{user_details.primary_year}}: {{user_details.primary}} ({{user_details.primary_cert}})</h4>
+
+    <h3>WORK EXPERIENCE</h3>
+    <h4>{{ user_details.work1 }}: {{ user_details.work1_year }}</h4>
+    {% if user_details.work2 %}
+    <h4>{{ user_details.work2 }}: {{ user_details.work2_year }}</h4>
+    {%else%}
+    {%endif%}
+    {% if user_details.work3 %}
+    <h4>{{ user_details.work3 }}: {{ user_details.work3_year }}</h4>
+    {%else%}
+    {%endif%}
+    {% if user_details.work4 %}
+    <h4>{{ user_details.work4 }}: {{ user_details.work4_year }}</h4>
+    {%else%}
+    {%endif%}
+
+    <h3>SKILLS</h3>
+    <ul>
+        <li>{{user_details.skill_one}}</li>
+        <li>{{user_details.skill_two}}</li>
+        <li>{{user_details.skill_three}}</li>
+    </ul>
+    <h3>HOBBIES</h3>
+    <ul>
+        <li>{{user_details.hobby_one}}</li>
+        <li>{{user_details.hobby_two}}</li>
+        <li>{{user_details.hobby_three}}</li>
+    </ul>
+    <h3>REFEREES</h3>
+    <h4>{{user_details.referee_post_one}}</h4>
+    <h4>{{user_details.referee_company_one}}</h4>
+    <h4>{{user_details.referee_name_one}}</h4>
+    <h4>TELEPHONE: {{user_details.referee_contact_one}}</h4>
+    <br>
+    <h4>{{user_details.referee_post_two}}</h4>
+    <h4>{{user_details.referee_company_two}}</h4>
+    <h4>{{user_details.referee_name_two}}</h4>
+    <h4>TELEPHONE: {{user_details.referee_contact_two}}</h4>
+    <br>
+    {% if user_details.referee_name_three%}
+    <h4>{{user_details.referee_post_three}}</h4>
+    <h4>{{user_details.referee_company_three}}</h4>
+    <h4>{{user_details.referee_name_three}}</h4>
+    <h4>TELEPHONE: {{user_details.referee_contact_three}}</h4>
+    {%endif%}
+</body>
+</html>

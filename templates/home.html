@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <header>
+      <div class="carousel" data-count="3" data-current="2">
+        <!-- <button class="btn btn-control"></button> -->
+
+      
+        <div class="items">
+          
+          <div class="item active" data-marker="2">
+            <img src="{% static 'assets/img/carousel/bckg.jpg' %}" alt="Background" class="background"/>
+
+            <div class="content">
+              <div class="outside-content">
+                <div class="inside-content">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-sm-8 col-sm-offset-2 align-center">
+                        <img src="{% static 'assets/img/carousel/cvim.jpg' %}" alt="Surface Pro"/>
+                      </div>
+                      <div class="col-sm-12 align-center">
+                        <h1>Create Your CV Now</h1>
+                        <p>Free and Premium Templates Available</p>
+                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        
+      </div>
+    </header>
+   
+    {% include 'includes/templ.html' %}
+  </div>
+
+{% endblock %}

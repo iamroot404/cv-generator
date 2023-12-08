@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<hr class="offset-md">
+
+<div class="box">
+  <div class="container">
+    <div class="col-sm-offset-5">
+      
+      <h1><i class="ion-android-download"></i> Premium Downloads</h1>
+      
+    </div>
+      <hr class="offset-sm">
+  </div>
+</div>
+<hr class="offset-md">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-sm-offset-2">
+            
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="checkout-cart">
+                  <div class="content">
+                    {% if basic %}
+                    {% for basic in basic %}
+                    
+                      <div class="media">
+                        
+                        <div class="media-left">
+                          <h2 class="h4 media-heading">{{basic.name}}</h2>
+                          <label>{{user}}</label>
+                          <p class="price">{{basic.created_at}}</p>
+                        </div>
+                        <div class="media-body">
+                          
+                          <a href="{% url 'advbasic_preview ' basic.id %}"><p>Preview your CV</p></a>
+                          
+                        </div>
+                        <div class="controls">
+                          <div class="input-group">
+                            <a href="{% url 'AdvBresume' basic.id %}"> <i class="ion-android-download"></i> Download </a>
+                          </div><!-- /input-group -->
+
+                          <div class="input-group">
+                            <a href="{% url 'editAdvBasic' basic.id %}"> <i class="ion-android-create"></i> Edit </a>
+                          </div><!-- /input-group -->
+
+                          <a href="{% url 'advdelete_cv' basic.id %}"> <i class="ion-android-delete"></i> Remove </a>
+                        </div>
+                      </div>
+
+                      {% endfor %}
+                      {%else%}
+                      <div class="col-sm-offset-5">
+      
+                        <h4>No Premium CV Available! <span><a href="{% url 'cv_list' %}">Create Cv</a></span></h4>
+                        
+                      </div>
+                      {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<hr class="offset-lg">
+<hr class="offset-lg"> 
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<hr class="offset-md">
+
+<div class="box text-center">
+    <div class="container">
+        <h1><img src="{{userprofile.profile_picture.url}}" alt=""  width="50" height="50" style="border-radius:50%"> Account</h1>
+    </div>
+</div>
+  <hr class="offset-md">
+
+  <div class="container">
+    <div class="row">
+      {% include 'includes/side_dashboard.html' %}
+      
+        <div class="col-md-8">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="checkout">
+                  {% include 'includes/alerts.html' %}
+                <header class="card-header">
+                <div class="text-center">
+                    <strong class="d-inline-block mr-3">Logged in as: </strong>
+                    <span>{{user.first_name}} {{user.last_name}}</span>
+                    &nbsp;
+                    <strong class="d-inline-block mr-3">Last Login: </strong>
+                    <span>{{user.last_login}}</span>
+                </div>
+                </header>
+                
+                <hr class="offset-sm">
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <hr class="offset-sm visible-xs">
+                        <strong class="d-inline-block mr-3"> First Name: </strong><span>{{user.first_name}}</span>
+  
+                    </div>
+                    <div class="col-sm-4">
+                        <hr class="offset-sm visible-xs">
+                      <strong>Last Name: </strong><span>{{user.last_name}}</span>
+ 
+                    </div>
+
+                    <div class="col-sm-4">
+                        <hr class="offset-sm visible-xs">
+                        <strong>UserName: </strong><span>{{user.username}}</span>
+  
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <hr class="offset-sm visible-xs">
+                        <strong>Phone Number: </strong><span>{{user.phone_number}}</span>
+  
+                    </div>
+                    
+                    <div class="col-sm-8">
+                        <hr class="offset-sm visible-xs">
+                        <strong>Email: </strong><span>{{user.email}}</span>
+  
+                      </div>
+                          
+                </div>
+
+                <div class="row">
+                    {% if userprofile.gender and userprofile.country and userprofile.city %}
+                    <div class="col-sm-4">
+                        <hr class="offset-sm visible-xs">
+                        <strong>Gender: </strong><span>{{userprofile.gender}}</span>
+  
+                    </div>
+                    <div class="col-sm-4">
+                        <hr class="offset-sm visible-xs">
+                        <strong>Country: </strong><span>{{userprofile.country}}</span>
+  
+                    </div>
+                    <div class="col-sm-4">
+                        <hr class="offset-sm visible-xs">
+                        <strong>City: </strong><span>{{userprofile.city}}</span>
+  
+                    </div>
+                     {%else%}
+                     {%endif%} 
+                </div>
+                  
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+  </div>
+  <hr class="offset-lg">
+  <hr class="offset-lg">
+{% endblock %}

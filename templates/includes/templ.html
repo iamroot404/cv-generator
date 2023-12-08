@@ -1,0 +1,36 @@
+{% load static %}
+<div class="container">
+    <h2>Our Templates</h2>
+    <hr class="offset-md">
+
+    {% for temp in temps %}
+    <div class="row products">
+      
+      <div class="col-sm-6 col-md-4 product">
+        
+        <a href="./"><img src="{{temp.product_image.url}}" alt="Surface Pro"/></a>
+
+        <div class="content">
+          <h1 class="h3">{{temp.product_name}}</h1>
+          <p class="price">KSH {{temp.price}}/=</p>
+          <h2 class="h3">Content</h2>
+          <p>{{temp.info}}</p>
+          <p>{{temp.career}}</p>
+          <p>{{temp.education}}</p>
+          <p>{{temp.skills}}</p>
+          <p>{{temp.ref}}</p>
+          
+
+          <a href="/generator/{{temp.link}}/"><button class="btn btn-primary btn-rounded btn-sm"> <i class=""></i>Create CV</button></a>
+        </div>
+        
+      </div>
+      {% endfor %}
+      
+
+        
+      
+
+      
+      
+</div>
